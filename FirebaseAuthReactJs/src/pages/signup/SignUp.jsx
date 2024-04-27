@@ -3,7 +3,6 @@ import Input from "../../components/shared/Input";
 
 const SignUp = () => {
     const [inputValue, setInputValue] = useState({ username: "", password: "" });
-    const { username, password } = inputValue;
 
     const handleSubmit = (e) => {
         e.preventDefault();  
@@ -12,23 +11,25 @@ const SignUp = () => {
     const handleChange = (e) => {
         const componentName = e.target.name; 
         const value = e.target.value; 
-        setInputValue({...inputValue, [componentName]: value}); 
+        setInputValue({...inputValue, [name]: value}); 
     };
   return (
     <div>
         <form onSubmit={handleSubmit} style={form}>
             <Input 
                 type="text"
+                name="username"
                 handleChange={handleChange} 
-                value={username} 
+                value={inputValue.username} 
                 label='username' /> 
             <Input
-                 handleChange={handleChange} 
                  type="password" 
-                 value={password}
+                 name="password"
+                 handleChange={handleChange} 
+                 value={inputValue.password}
                  label='password'/> 
             <div>
-                <button type="submit">submit</button>
+                <button type="submit">Submit</button>
             </div>
         </form>
     </div>
